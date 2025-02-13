@@ -6,16 +6,22 @@ Simple web application that continiously sends audio to identify songs through A
 
 # Installation 
 - Clone the repository
+  ```Code
   git clone https://github.com/yourusername/auto-shazamer.git
   cd auto-shazamer
+  ```
+  
 - Install dependencies
   npm install
 - Set up API keys
+  ``` Code
   ACR_ACCESS_KEY = your_acrcloud_access_secret
   ACR_HOST = https://identify-us-west-2.acrcloud.com/v1/identify
+  ```
   - Run server
+  ``` Code
   node server.js
-
+  ```
 # Front end usage
 1. Open index.html in browser
 2. Click "Start Listening" to capture audio
