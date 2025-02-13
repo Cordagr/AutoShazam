@@ -32,4 +32,19 @@
       
       }
       mediaRecoder.start(1000)
+      function stopListening()
+      {
+      if(!isListening) 
+        return
+      mediaRecorder.stop()
+      }
+
+      async function sendAudio()
+        {
+          const blob = new Blob(audioChunks, {type: 'audio/webm'})
+          const data = await response.json()
+          document.getElementById("start").addEventListener("click",startListening)
+          document.getElementById("stop").addEventListener("click",stopListening)
+        }
 </script>
+
