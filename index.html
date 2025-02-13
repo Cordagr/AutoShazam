@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Auto Shazamer</h1>
+</body>
+<button id="start"> Start Listening</button>
+<button id="stop"> Stop Listening</button>
+<p> Current Song: <span id="song">None</p>
+<script>
+  let mediaRecorder
+  let audioChunks = []
+  let isListening = False
+  async function startListening()
+    {
+    if (isListening) 
+      return
+    const stream = await navigator.mediaDevices.getUserMedia({media:True})
+    mediaRecorder = new MediaRecorder(stream)
+
+    mediaRecorder.ondataavailable = event =>
+      {
+      audioChunks.push(event.data)
+      if(audioChunks.length >= 5)
+      {
+        sendAudio()
+        audioChunks = []
+      }
+      
+      }
+      mediaRecoder.start(1000)
+</script>
