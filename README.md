@@ -6,7 +6,7 @@ Simple web application that continiously sends audio to identify songs through A
 
 # Installation 
 - Clone the repository
-  gt clone https://github.com/yourusername/auto-shazamer.git
+  git clone https://github.com/yourusername/auto-shazamer.git
   cd auto-shazamer
 - Install dependencies
   npm install
