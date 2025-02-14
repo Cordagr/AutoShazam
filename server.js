@@ -36,20 +36,28 @@ try
 {
   console.error('ACRCloud Error:, error.reponse?.data || error.message)
   return null
+}  
 }
 
+app.post("/recognize", upload.single("file"), async(req,res) =>
+  {
+    if(!req.file)
+      return res.status(400).json({error: "No audio file uploaded"})
+    const filePath = req.file.path
+    const songData = await recognizeSong(filePath)
+    fs.unlinkSync(filePath)
+    // Json formatted payload
+    if(songData)
+    {
+      res.json({title: songData.title, artist: songData.artists?.map(a => a.name).join(", "), album: songData.album?.name || "Unknown",
+    })
+  }
+    else
+    {
+      res.status(500).json({error: "Song recognition failed"})
+    }
 
-
-
-
-
-
-
-
-
-
-  
-}
+    app.listen(3000, () => console.log("Server running on port 3000")
 
 
         
